@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace StoreRequisition.Page
+{
+    public partial class Frm_Login : System.Web.UI.Page
+    {
+        ClassDB db = new ClassDB();
+        clsAuthenticate aAuthent = new clsAuthenticate();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            //dt = new DataTable();
+            //db.TSql = "APPS.MMCT_ORA_USER.VALIDATED_USERID";
+            //dt = db.ValidatedUserId(txtUsername.Text, txtPassword.Text);
+            //if (dt.Rows.Count > 0)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+
+           
+        }
+
+
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (!aAuthent.SetDomain("mmct_domain"))
+            {
+                throw new Exception("โดมเมนในระบบผิดพลาด โปรดแจ้งผู้ดูแลระบบ");
+            }
+
+            // check if user supplied username properly
+            //if (!aAuthent.SetUser(txt_UserName.Text.ToLower()))
+            if (!aAuthent.SetUser(txtUsername.Text.ToLower()))
+            {
+                throw new Exception("Please provide an username");
+                //Login1.InstructionText = "Please provide an username"
+                //MessageBox.Show("Please provide an username")                
+            }
+
+            // now check if password is supplied
+            if (!aAuthent.SetPass(txtPassword.Text.Trim()))
+            {
+                throw new Exception("Please provide a password");
+            }
+
+            if (aAuthent.IsAuthenticated("mmct_domain", txtUsername.Text.ToLower(), txtPassword.Text.Trim()) == false)
+            {
+                throw new Exception("รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง");
+            }
+            else
+            {
+                Session["UserAD"] = txtUsername.Text.ToLower();
+                Response.Redirect("~/Page/Frm_Send_Requisition.aspx");
+            }
+
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

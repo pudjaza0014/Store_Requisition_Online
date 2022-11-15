@@ -1,0 +1,124 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Bootstrap_M.master.cs" Inherits="StoreRequisition.Bootstrap_M" %>
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>SMRO - 2.0.8</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="#">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/Site-Boostrap.css" rel="stylesheet" />
+    <link href="css/MMCT_R.css" rel="stylesheet" />
+    <link href="Scripts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+        var interval;
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#sidebarCollapse i').toggleClass('blue');
+            });
+            //  cntActOwner();
+            window.history.forward();
+        });
+
+
+
+        //function cntActOwner() {
+        //    var obj = { param1: "ActOwner" };
+        //    var cnt = 0;
+
+        //    $.ajax({
+        //        url: 'Frm_Requisition_List.aspx/GetData',
+        //        data: JSON.stringify(obj),
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        type: "POST",
+        //        success: function (data) {
+
+        //            cnt = data.d.length;
+        //            if (cnt > 0) {
+        //                $("#cntActOwner").text(cnt);
+        //            } else {
+        //                $("#kbdActOwner").hide();
+        //            }
+        //        },
+        //        error: function (ex) {
+
+        //            alert('error!' + ex.responseText);
+        //            console.log(ex.responseText);
+        //            return 0;
+        //        }
+        //    });
+
+        //}
+
+
+        function logout() {
+            if (confirm("Are you sure to signout ?") == true) {
+                clearInterval(interval);
+                $.ajax({
+                    url: 'Frm_Requisition_List.aspx/SignOut',
+                    // data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+                        if (data) {
+                            alert('you are signout');
+                            // window.location.href = "../Page/Frm_Login.aspx";
+
+                            //window.open("../Page/Frm_Login.aspx");
+                            //window.close();
+                            // return;
+                            window.location.href = "../Page/Frm_Login_R.aspx";
+
+                        }
+                    },
+                    error: function (ex) {
+
+                        alert('error!' + ex.responseText);
+                        console.log(ex.responseText);
+                        return 0;
+                    }
+                });
+
+            } else {
+                return false;
+            } 
+        }
+         
+    </script>
+    <style>
+        .blue {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mb-1">
+                        <a href="../Default.aspx" class="btn btn-info "><i class="fas fa-chevron-left" aria-hidden="true"></i> Back to Default</a>
+                         <%--<span class="text-white"> <span class="h1">Requisition Monitoring</span> <span style="font-size:11px;">2.0.6</span></span>--%>
+                    </div>
+                    <div class="col-12 ">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

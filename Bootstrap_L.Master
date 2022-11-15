@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Bootstrap_L.master.cs" Inherits="StoreRequisition.Bootstrap_L" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>SMRO - 2.0.8</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="#">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/Site-Boostrap.css" rel="stylesheet" />
+    <link href="css/MMCT_R.css" rel="stylesheet" />
+    <link href="Scripts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class=" ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-MMCT " id="topbars">
+            <a class="navbar-brand font-weight-bolder" href="#">Store&#39;s Material Requisition Online <span style="font-size:11px;">2.0.8</span></a>
+            <div class="navbar-nav ml-auto">
+                <asp:Label ID="lblNames" runat="server" CssClass="text-white-50" Text="Hi!"></asp:Label>
+            </div>
+        </nav>
+        <nav class="navbar-cuscom  navbar-expand-lg navbar-dark bg-MMCT2 ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse pl-md-3" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active mt-1 mb-md-1 p-md-1" href="../Default.aspx">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_List.aspx">Requisition List</a> 
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_monitoring.aspx">Monitoring</a>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Send_Requisition.aspx">Send LF</a>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1 dropdown-toggle-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Report  <i class="fas fa-sort-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../Page/Frm_Report_Number.aspx">Report By Number</a>
+                        <a class="dropdown-item" href="../Page/Frm_Report_Date.aspx">Report By Date</a>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+            <div class="row"> 
+                <div class="col-12 ">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div> 
+        </div>
+</body>
+</html>

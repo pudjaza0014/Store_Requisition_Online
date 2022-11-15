@@ -1,0 +1,291 @@
+#tableForm
+{
+    font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif; 
+    border: 1px solid #3366CC;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tableForm td{
+    padding-left: 10px;
+}
+
+#tableForm td.header
+{
+    font-weight: bold;
+    font-size: 14px;
+    color: #003366;
+    background-color: #6AA3DB;
+    text-align: left;
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #3366CC;
+}
+
+#tableForm td.headerButton
+{
+    font-weight: bold;
+    font-size: 14px;
+    color: #003366;
+    background-color: #6AA3DB;
+    text-align: right;
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #3366CC;
+}
+
+#tableSubForm
+{    
+    border: 1px solid #C0C0C0;
+    border-collapse: collapse;
+    width: 97%;
+    text-align: center;
+}
+
+#tableSubForm td.header
+{
+    font-weight: bold;
+    font-size: 12px;
+    color: #003366;
+    background-color: #B8D6E4;
+    text-align: left;
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #C0C0C0;
+}
+
+#tableSubForm td.headerButton
+{
+    font-weight: bold;
+    font-size: 12px;
+    color: #003366;
+    background-color: #B8D6E4;
+    text-align: right;
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #C0C0C0;
+}
+
+#tableSubFormData
+{        
+    text-align: center;
+    border-collapse: collapse;
+    width: 98%;
+}
+
+#tableSubFormData td
+{        
+    border: 1px solid #D7E5F2;
+    border-collapse: collapse;
+    margin-left: 10px;
+}
+
+#tableSubFormData td.labelcell
+{
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #3670A7;
+    background-color: transparent;
+    text-align: right;
+}  
+
+#tableSubFormData td.fieldcell {  
+ background-color: #F2F7FB;  
+ color: #000000;  
+ text-align: left;   
+}  
+
+#tableSubFormData td.fieldcell select
+{
+	padding: 3px;
+	font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #D7E5F2;
+	color: #102132;
+	border: 1px solid #284279;
+	vertical-align: middle;
+	text-align: left;
+}
+
+#tableSubFormData td.buttoncell {  
+ background-color: #F2F7FB;  
+ color: #000000;  
+ text-align: center;    
+} 
+
+.fieldcell input
+{
+    width: 103px;
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    background-color: #D0DAFB;
+    color: #102132;
+    border: 1px solid #284279;
+}  
+
+.fieldcell input.ReadOnly
+{
+    width: 115px;
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    background-color: #C0C0C0;
+    color: #102132;
+    border: 1px solid #284279;
+}  
+
+.fieldcell select
+{
+	padding: 3px;
+	font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #D7E5F2;
+	color: #102132;
+	border: 1px solid #284279;
+	vertical-align: middle;
+	text-align: left;
+}
+
+.fieldcell .button
+{
+ font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;  
+ background-color: #D7E5F2;  
+ color: #102132;  
+ margin-left: 5px;  
+ margin-top: 3px;  
+ margin-bottom: 3px;
+ margin-right: 5px; 
+}
+
+.smalllabelcell {  
+ font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;  
+ background-color: transparent;  
+ color: #3670A7;  
+ width: 100px;  
+}  
+.smallfieldcell {  
+ background-color: #F2F7FB;  
+ color: #000000;  
+ text-align: right;  
+}
+
+.smallfieldcell input {  
+ width: 100px;  
+ font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;  
+ background-color: #D7E5F2;  
+ color: #102132;  
+ border: 1px solid #284279;  
+}  
+.smallfieldcell select {  
+ font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;  
+ background-color: #D7E5F2;  
+ color: #102132;  
+ border: 1px solid #284279;  
+}
+
+.button {  
+ font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;  
+ background-color: #D7E5F2;  
+ color: #102132;  
+ margin-left: 5px;  
+ margin-top: 3px;  
+ margin-bottom: 3px;
+ margin-right: 5px;
+}
+
+
+.searchResultHeader
+{
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #336699;
+    text-align: center;
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #C0C0C0;
+} 
+
+.searchResultData
+{
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #3670A7;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #0066CC;
+}
+
+.searchResultFooter
+{
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #3670A7;
+    background-color: #FFFFCC;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #0066CC;
+    font-weight: bold;
+}
+
+div.MessageBox
+{
+    position: absolute;
+    top:50%;
+    width: 550px;
+    z-index: auto;
+    background-color: Transparent;
+}
+
+table.MessageBox
+{
+    border: 3px solid #666666;
+    margin: 10px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #00529B;
+    background-color: #BDE5F8;
+    width: 100%;
+    text-align: center;
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+div.PopupDialog
+{
+    display:block;
+    position: absolute;
+    top:50%;
+    width: 750px;
+    z-index: auto;
+    background-color: Transparent;
+}
+
+table.PopupDialog
+{
+    border: 3px solid #666666;
+    margin: 10px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #00529B;
+    background-color: #FFFFFF;
+    width: 70%;
+    height: 50%;
+    text-align: center;
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+td.NoResult
+{
+	text-align: center;
+	font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.NoResult
+{
+	text-align: center;
+	font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF0000;
+}

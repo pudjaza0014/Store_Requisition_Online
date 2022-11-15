@@ -1,0 +1,238 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BoostrapSite.master.cs" Inherits="StoreRequisition.BoostrapSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>SMRO - 2.0.8</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="#">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/Site-Boostrap.css" rel="stylesheet" />
+    <link href="css/MMCT_R.css" rel="stylesheet" />
+    <link href="Scripts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+        var interval;
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#sidebarCollapse i').toggleClass('blue');
+            });
+            cntActOwner();
+
+            window.history.forward();
+
+
+
+        });
+
+
+
+        function cntActOwner() {
+            var obj = { param1: "ActOwner" };
+            var cnt = 0;
+
+            $.ajax({
+                url: 'Frm_Requisition_List.aspx/GetData',
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+
+                    cnt = data.d.length;
+                    if (cnt > 0) {
+                        $("#cntActOwner").text(cnt);
+                    } else {
+                        $("#kbdActOwner").hide();
+                    }
+                },
+                error: function (ex) {
+
+                    alert('error!' + ex.responseText);
+                    console.log(ex.responseText);
+                    return 0;
+                }
+            });
+
+        }
+
+
+        function logout() {
+            if (confirm("Are you sure to signout ?") == true) {
+                clearInterval(interval);
+                $.ajax({
+                    url: 'Frm_Requisition_List.aspx/SignOut',
+                    // data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+                        if (data) {
+                            alert('you are signout');
+                            // window.location.href = "../Page/Frm_Login.aspx";
+
+                            //window.open("../Page/Frm_Login.aspx");
+                            //window.close();
+                            // return;
+                            window.location.href = "../Page/Frm_Login_R.aspx";
+
+                        }
+                    },
+                    error: function (ex) {
+
+                        alert('error!' + ex.responseText);
+                        console.log(ex.responseText);
+                        return 0;
+                    }
+                });
+
+            } else {
+                return false;
+            }
+
+
+
+
+        }
+
+
+    </script>
+    <style>
+        .blue {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class=" ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-MMCT " id="topbars">
+            <a class="navbar-brand font-weight-bolder" href="#">Store&#39;s Material Requisition Online <span style="font-size: 11px;">2.0.8</span></a>
+            <div class="navbar-nav ml-auto">
+                <asp:Label ID="lblNames" runat="server" CssClass="text-white-50" Text="Hi!"></asp:Label>
+            </div>
+        </nav>
+        <nav class="navbar-cuscom  navbar-expand-lg navbar-dark bg-MMCT2 ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse pl-md-3" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active mt-1 mb-md-1 p-md-1" href="../Default.aspx">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_List.aspx">Requisition List</a>
+
+                    <%--<a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition.aspx">Requisition</a>--%>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_monitoring.aspx">Monitoring</a>
+
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Send_Requisition.aspx">Send LF</a>
+                    <a class="nav-link mt-md-1 mb-md-1 p-md-1 dropdown-toggle-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Report  <i class="fas fa-sort-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../Page/Frm_Report_Number.aspx">Report By Number</a>
+                        <a class="dropdown-item" href="../Page/Frm_Report_Date.aspx">Report By Date</a>
+
+                    </div>
+                </div>
+
+                <div class="navbar-nav ml-auto">
+                    <button onclick="logout()">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="wrapper">
+
+        <nav id="sidebar">
+
+            <ul class="list-unstyled components">
+
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-edit"></i>My Activity</a>
+                    <ul class="collapse list-unstyled show" id="homeSubmenu">
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?"><i class="fas fa-file-alt"></i>ALL</a>
+                        </li>
+
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?jobType=ActOwner"><i class="fas fa-file-alt"></i>My Activity Owner <kbd class="bg-danger" id="kbdActOwner"><span id="cntActOwner"></span></kbd></a>
+                        </li>
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?jobType=jobOwner"><i class="fas fa-file-alt"></i>My Job Owner</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenuxxx" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-tasks"></i>Progress</a>
+                    <ul class="collapse list-unstyled show" id="pageSubmenuxxx">
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition Picking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition Transfer</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <%if (getAuthority())
+                    {
+                %>
+                <li>
+                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i>Maintenance</a>
+                    <ul class="collapse list-unstyled " id="pageSubmenuMaintenance">
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?jobType=ReversePicking"><i class="fas fa-history"></i>Reverse Picking</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <%
+                    }
+                %>
+
+
+
+                <hr />
+                <li>
+                    <a href="../PDF/Work_Instruction.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Work_Instruction</a>
+                </li>
+                <li class="btnSide_SignOut">
+                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info " title="Show/Hide sidebar">
+                            <%-- <i class="fa fa-home" aria-hidden="true"></i>--%>
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                            <%-- <span>Hide menu</span>--%>
+                        </button>
+
+                    </div>
+                    <div class="col-12 ">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div> 
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace StoreRequisition.Page
+{
+    public partial class Frm_Report : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            String Date_Time = (String)Session["RequestDate"];
+            vlRequisitionNumber.Text = (String)Session["RequisitionNumber"];
+            //vlRequisitionNumbers.Text = "*" + (String)Session["RequisitionNumber"] + "*";
+            vlLocation.Text = (String)Session["Location"];
+            vlDeliveryStation.Text = (String)Session["DeliveryStation"];
+            vlRequestBy.Text = (String)Session["RequestBy"];
+            vlRequestTel.Text = (String)Session["RequestTel"];
+            vlRequestDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            vlRequestTime.Text = DateTime.Now.ToString("hh:mm:ss");
+            vlIssueType.Text = (String)Session["IssueType"];
+            vlSubInventory.Text = (String)Session["SubInventory"];
+            //vlSubInventory0.Text = (String)Session["SubInventory"];
+            vlRemark.Text = (String)Session["Remark"];
+        }
+
+
+        public string getWhileLoopData()
+        {
+            string htmlStr = "";
+            Double x = 0;
+            DataTable DT = new DataTable();
+            DT = (DataTable)Session["ListItem"];
+
+            if (DT.Rows.Count > 0)
+            {
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    htmlStr += "<tr class='auto-style24'><td class='auto-style26'>" + DT.Rows[i][0].ToString().Trim() + "</td><td class='auto-style25'>" + DT.Rows[i][1].ToString().Trim() + "</td><td class='auto-style25'>" + DT.Rows[i][2].ToString().Trim() + "</td><td class='auto-style25'>" + DT.Rows[i][3].ToString().Trim() + "</td><td class='auto-style26'>" + DT.Rows[i][4].ToString().Trim() + "</td><td class='auto-style27'>" + DT.Rows[i][5].ToString().Trim() + "</td><td class='auto-style27'></td><td class='auto-style27'></td></tr>";
+                    x = x + Convert.ToDouble(DT.Rows[i][5].ToString().Trim());
+                }
+                htmlStr += "<tr class='auto-style24'><td class='auto-style27' colspan='5' rowspan='0'><strong><span class='auto-style27'>Total</span> : </strong></td><td class='auto-style27'>" + x.ToString("#,##0.00") + "</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td></tr>";
+            }
+
+            return htmlStr;
+        }
+
+        public string getReqNumber()
+        {
+            return "*" + (String)Session["RequisitionNumber"] + "*";
+        }
+
+        public string getSubInventory()
+        {
+            return "*" + (String)Session["SubInventory"] + "*";
+        }
+    }
+}

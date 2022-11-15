@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreRequisition", "StoreRequisition.csproj", "{6CC435AD-10CC-4D43-8CB3-08CE528774C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Debug|x86.ActiveCfg = Debug|x86
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Debug|x86.Build.0 = Debug|x86
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Release|x86.ActiveCfg = Release|x86
+		{6CC435AD-10CC-4D43-8CB3-08CE528774C5}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {04F53E6E-C7E0-45B7-80A3-CFF89EEC14BB}
+	EndGlobalSection
+EndGlobal

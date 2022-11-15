@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CC435AD-10CC-4D43-8CB3-08CE528774C5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoreRequisition</RootNamespace>
+    <AssemblyName>StoreRequisition</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="css\MMCT.css" />
+    <Content Include="css\MMCT_R.css" />
+    <Content Include="css\MMCT_Report.css" />
+    <Content Include="css\SFC.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Dll\itextsharp.dll" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="images\arrw_back.gif" />
+    <Content Include="images\arrw_delete.gif" />
+    <Content Include="images\arrw_first.gif" />
+    <Content Include="images\arrw_gotopage.gif" />
+    <Content Include="images\arrw_last.gif" />
+    <Content Include="images\arrw_next.gif" />
+    <Content Include="images\arrw_ref.gif" />
+    <Content Include="images\btn_add.gif" />
+    <Content Include="images\btn_edit.gif" />
+    <Content Include="images\btn_find.gif" />
+    <Content Include="images\btn_new.gif" />
+    <Content Include="images\calendar.png" />
+    <Content Include="images\delete.PNG" />
+    <Content Include="images\edit.gif" />
+    <Content Include="images\enterprise_solutions_home.jpg" />
+    <Content Include="images\ess.png" />
+    <Content Include="images\g1.gif" />
+    <Content Include="images\g2.gif" />
+    <Content Include="images\i1.gif" />
+    <Content Include="images\iOS-7-dark-mod-iphone-wallpaper-ar72014.jpeg" />
+    <Content Include="images\j0435877.jpg" />
+    <Content Include="images\logo-mektec.png" />
+    <Content Include="images\logo_oracle.jpg" />
+    <Content Include="images\message_err.gif" />
+    <Content Include="images\microsoft-sql-server-logo.gif" />
+    <Content Include="images\MK.gif" />
+    <Content Include="images\save_16.png" />
+    <Content Include="Page\Frm_Login.aspx" />
+    <Content Include="Page\Frm_Login_R.aspx" />
+    <Content Include="Page\Frm_Report_Date.aspx" />
+    <Content Include="Page\Frm_Report_Number.aspx" />
+    <Content Include="Page\Frm_Report_R.aspx" />
+    <Content Include="Page\Frm_Report_R_Print.aspx" />
+    <Content Include="Page\Frm_Requisition_List.aspx" />
+    <Content Include="Page\Frm_Requisition_Maintenance.aspx" />
+    <Content Include="Page\Frm_Requisition_monitoring.aspx" />
+    <Content Include="Page\Frm_Send_Requisition.aspx" />
+    <Content Include="Page\Frm_Requisition.aspx" />
+    <Content Include="Page\Frm_Report.aspx" />
+    <Content Include="Page\UserControls\ucPickingCenters.ascx" />
+    <Content Include="Page\UserControls\ucRegularDetail.ascx" />
+    <Content Include="Page\UserControls\ucStoreIssue.ascx" />
+    <Content Include="Page\UserControls\ucSupvApproveds.ascx" />
+    <Content Include="Page\UserControls\ucUserReceived.ascx" />
+    <Content Include="Pictures\Purchse.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap5.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bulma.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bulma.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.dataTables.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.dataTables.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.foundation.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\jquery.dataTables.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\images\sort_both.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap5.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bootstrap5.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bulma.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.bulma.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.dataTables.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.12.1\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\datatables.css" />
+    <Content Include="Scripts\DataTables\datatables.js" />
+    <Content Include="Scripts\DataTables\datatables.min.css" />
+    <Content Include="Scripts\DataTables\datatables.min.js" />
+    <Content Include="Scripts\DataTables\jQuery-3.6.0\jquery-3.6.0.js" />
+    <Content Include="Scripts\DataTables\jQuery-3.6.0\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\fontawesome\css\all.css" />
+    <Content Include="Scripts\fontawesome\css\all.min.css" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="libman.json" />
+    <Content Include="BoostrapSite.Master" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\custom_fonts\3OF9_NEW.TTF" />
+    <Content Include="Bootstrap_M.Master" />
+    <Content Include="Bootstrap_L.Master" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\DataTables.zip" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="PDF\Work_Instruction.pdf" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Scripts\jquery.MultiFile.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Site\Report_Detail.js" />
+    <Content Include="Scripts\Site\Report_PickingCenter.js" />
+    <Content Include="Scripts\Site\Report_StoreIssue.js" />
+    <Content Include="Scripts\Site\Report_SupvApproved.js" />
+    <Content Include="Scripts\Site\Report_UserRecieved.js" />
+    <Content Include="Scripts\Site\Requisition_List.js" />
+    <Content Include="Scripts\Site\Requisition_M.js" />
+    <Content Include="Scripts\Site\Requisition_Maintenance.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\Start.debug.js" />
+    <Content Include="Scripts\ui\jquery-ui.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Styles\Site-Boostrap.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="ui-darkness\images\animated-overlay.gif" />
+    <Content Include="ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="ui-darkness\images\ui-icons_222222_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_a83300_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="ui-darkness\jquery-ui.css" />
+    <Content Include="ui-darkness\jquery-ui.min.css" />
+    <Content Include="ui-darkness\jquery.ui.theme.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoostrapSite.Master.cs">
+      <DependentUpon>BoostrapSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BoostrapSite.Master.designer.cs">
+      <DependentUpon>BoostrapSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap_L.Master.cs">
+      <DependentUpon>Bootstrap_L.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap_L.Master.designer.cs">
+      <DependentUpon>Bootstrap_L.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap_M.Master.cs">
+      <DependentUpon>Bootstrap_M.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap_M.Master.designer.cs">
+      <DependentUpon>Bootstrap_M.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Class\ClassDB.cs" />
+    <Compile Include="Class\clsAuthenticate.cs" />
+    <Compile Include="Class\clsSQLscript.cs" />
+    <Compile Include="Class\Utill.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\PickingItems.cs" />
+    <Compile Include="Models\Requisition_List.cs" />
+    <Compile Include="Models\Requisition_M.cs" />
+    <Compile Include="Models\UserAD.cs" />
+    <Compile Include="Page\Frm_Login.aspx.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Login.aspx.designer.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Login_R.aspx.cs">
+      <DependentUpon>Frm_Login_R.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Login_R.aspx.designer.cs">
+      <DependentUpon>Frm_Login_R.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Date.aspx.cs">
+      <DependentUpon>Frm_Report_Date.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Date.aspx.designer.cs">
+      <DependentUpon>Frm_Report_Date.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Number.aspx.cs">
+      <DependentUpon>Frm_Report_Number.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Number.aspx.designer.cs">
+      <DependentUpon>Frm_Report_Number.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_R.aspx.cs">
+      <DependentUpon>Frm_Report_R.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_R.aspx.designer.cs">
+      <DependentUpon>Frm_Report_R.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_R_Print.aspx.cs">
+      <DependentUpon>Frm_Report_R_Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_R_Print.aspx.designer.cs">
+      <DependentUpon>Frm_Report_R_Print.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_List.aspx.cs">
+      <DependentUpon>Frm_Requisition_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_List.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Maintenance.aspx.cs">
+      <DependentUpon>Frm_Requisition_Maintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Maintenance.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_Maintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_monitoring.aspx.cs">
+      <DependentUpon>Frm_Requisition_monitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_monitoring.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_monitoring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Send_Requisition.aspx.cs">
+      <DependentUpon>Frm_Send_Requisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Send_Requisition.aspx.designer.cs">
+      <DependentUpon>Frm_Send_Requisition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition.aspx.cs">
+      <DependentUpon>Frm_Requisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report.aspx.cs">
+      <DependentUpon>Frm_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report.aspx.designer.cs">
+      <DependentUpon>Frm_Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucPickingCenters.ascx.cs">
+      <DependentUpon>ucPickingCenters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucPickingCenters.ascx.designer.cs">
+      <DependentUpon>ucPickingCenters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucRegularDetail.ascx.cs">
+      <DependentUpon>ucRegularDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucRegularDetail.ascx.designer.cs">
+      <DependentUpon>ucRegularDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucStoreIssue.ascx.cs">
+      <DependentUpon>ucStoreIssue.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucStoreIssue.ascx.designer.cs">
+      <DependentUpon>ucStoreIssue.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucSupvApproveds.ascx.cs">
+      <DependentUpon>ucSupvApproveds.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucSupvApproveds.ascx.designer.cs">
+      <DependentUpon>ucSupvApproveds.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucUserReceived.ascx.cs">
+      <DependentUpon>ucUserReceived.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UserControls\ucUserReceived.ascx.designer.cs">
+      <DependentUpon>ucUserReceived.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Account\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Thumbs.db" />
+    <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Site1.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51330</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51331/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties content_4bootstrap-grid_1css_1map__JsonSchema="https://json.schemastore.org/schema-org-thing.json" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

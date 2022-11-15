@@ -1,0 +1,103 @@
+﻿
+.auto-style6 {
+    text-align: center;
+}
+
+.auto-style8 {
+    font-size: large;
+}
+
+.auto-style11 {
+    width: 25%;
+}
+
+.auto-style13 {
+    text-align: left;
+}
+
+.auto-style14 {
+    text-align: right;
+}
+
+.auto-style15 {
+    width: 33%;
+    height: 19px;
+}
+
+.auto-style19 {
+    text-align: right;
+    height: 32px;
+}
+
+.auto-style21 {
+    font-size: xx-small;
+}
+
+.auto-style22 {
+    text-align: center;
+    height: 19px;
+}
+
+.auto-style23 {
+    height: 19px;
+}
+
+.auto-style24 {
+    font-size: x-small;
+}
+
+.auto-style25 {
+    text-align: left;
+    font-size: small;
+}
+
+.auto-style26 {
+    text-align: center;
+    font-size: small;
+}
+
+.auto-style27 {
+    text-align: right;
+    font-size: small;
+}
+
+.auto-style28 {
+    text-align: left;
+    width: 50%;
+} 
+@font-face {
+    font-family: '3OF9_NEW';
+    src: url('../Content/custom_fonts/3OF9_NEW.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: '3 of 9 Barcode';
+    src: url('../Content/custom_fonts/3OF9_NEW.TTF') format('truetype');
+}
+.auto-style29 {
+    /* text-align: right;*/
+    font-size: xx-large;
+    /*font-family: '3 of 9 Barcode';*/
+    font-family: '3OF9_NEW';
+}
+
+.auto-style30 {
+    text-align: left;
+    font-size: x-large;
+    font-family: '3OF9_NEW';
+}
+
+th.col-h,
+td.col-h {
+    display: table-cell !important;
+
+}
+@media (max-width: 1080px) {
+    th.col-h, td.col-h {
+        display: none !important;
+    }
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+

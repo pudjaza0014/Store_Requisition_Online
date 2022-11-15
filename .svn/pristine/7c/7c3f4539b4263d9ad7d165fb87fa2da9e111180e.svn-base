@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CC435AD-10CC-4D43-8CB3-08CE528774C5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoreRequisition</RootNamespace>
+    <AssemblyName>StoreRequisition</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Dll\itextsharp.dll" />
+    <Content Include="images\arrw_back.gif" />
+    <Content Include="images\arrw_delete.gif" />
+    <Content Include="images\arrw_first.gif" />
+    <Content Include="images\arrw_gotopage.gif" />
+    <Content Include="images\arrw_last.gif" />
+    <Content Include="images\arrw_next.gif" />
+    <Content Include="images\arrw_ref.gif" />
+    <Content Include="images\btn_add.gif" />
+    <Content Include="images\btn_edit.gif" />
+    <Content Include="images\btn_find.gif" />
+    <Content Include="images\btn_new.gif" />
+    <Content Include="images\calendar.png" />
+    <Content Include="images\delete.PNG" />
+    <Content Include="images\edit.gif" />
+    <Content Include="images\enterprise_solutions_home.jpg" />
+    <Content Include="images\ess.png" />
+    <Content Include="images\g1.gif" />
+    <Content Include="images\g2.gif" />
+    <Content Include="images\i1.gif" />
+    <Content Include="images\j0435877.jpg" />
+    <Content Include="images\logo-mektec.png" />
+    <Content Include="images\logo_oracle.jpg" />
+    <Content Include="images\message_err.gif" />
+    <Content Include="images\microsoft-sql-server-logo.gif" />
+    <Content Include="images\MK.gif" />
+    <Content Include="images\save_16.png" />
+    <Content Include="Page\Frm_Login.aspx" />
+    <Content Include="Page\Frm_Report_Date.aspx" />
+    <Content Include="Page\Frm_Report_Number.aspx" />
+    <Content Include="Page\Frm_Send_Requisition.aspx" />
+    <Content Include="Page\Frm_Requisition.aspx" />
+    <Content Include="Page\Frm_Report.aspx" />
+    <Content Include="Pictures\Purchse.jpg" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery.MultiFile.js" />
+    <Content Include="Scripts\Start.debug.js" />
+    <Content Include="Scripts\ui\jquery-ui.js" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="ui-darkness\images\animated-overlay.gif" />
+    <Content Include="ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="ui-darkness\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="ui-darkness\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="ui-darkness\images\ui-icons_222222_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_a83300_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="ui-darkness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="ui-darkness\jquery-ui.css" />
+    <Content Include="ui-darkness\jquery-ui.min.css" />
+    <Content Include="ui-darkness\jquery.ui.theme.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClassDB.cs" />
+    <Compile Include="Class\clsAuthenticate.cs" />
+    <Compile Include="Class\Utill.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Login.aspx.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Login.aspx.designer.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Date.aspx.cs">
+      <DependentUpon>Frm_Report_Date.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Date.aspx.designer.cs">
+      <DependentUpon>Frm_Report_Date.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Number.aspx.cs">
+      <DependentUpon>Frm_Report_Number.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report_Number.aspx.designer.cs">
+      <DependentUpon>Frm_Report_Number.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Send_Requisition.aspx.cs">
+      <DependentUpon>Frm_Send_Requisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Send_Requisition.aspx.designer.cs">
+      <DependentUpon>Frm_Send_Requisition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition.aspx.cs">
+      <DependentUpon>Frm_Requisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Report.aspx.cs">
+      <DependentUpon>Frm_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Report.aspx.designer.cs">
+      <DependentUpon>Frm_Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Account\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Thumbs.db" />
+    <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Site1.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51330</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51331/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
