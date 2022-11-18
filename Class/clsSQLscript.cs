@@ -27,7 +27,7 @@ namespace StoreRequisition.Class
                 dt = db.GetDataOra();
                 return dt;
             }
-            catch (Exception ex)
+            catch (Exception )
             { 
                 throw;
             }
@@ -118,7 +118,7 @@ namespace StoreRequisition.Class
             dt = db.GetDataOra();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 throw;
@@ -398,7 +398,6 @@ namespace StoreRequisition.Class
             dt = new DataTable();
             try
             {
-
 
                 //strSQL = " SELECT INF.REQ_NUM AS REQ_NUM ,INF.REQ_DATE AS REQ_DATE, INF.REQ_BY AS REQ_BY, sysdate AS ACTION_DATE, CASE WHEN INF.REQ_STATUS ='SUBMIT' THEN 'CONFIRM PACK' ELSE INF.REQ_STATUS END AS PROGRESS , REQ_APPROVE_BY_NAME APPROVE_BY,  NVL(SUB_INV,TRANS_TYPE) TRANSFER_TO,DELIVERY_STATION , case when sysdate - req_date< 0.001333 then 'new'else '' end as StateNew , INF.REQ_APPROVE_BY , INF.SUB_INV  , INF.CUR_ACTIVITY ACTIVITY_EN , PC.PROCESS_COLORS ,INF.REQ_LOCATION  FROM MMT.MMT_STORE_INFO INF LEFT JOIN MMT.MMT_STORE_REQ_PROCESS PC ON INF.REQ_STATUS = PC.PROCESS_NAME  WHERE INF.REQ_NUM IS NOT NULL AND REQ_DATE < SYSDATE   ";
                 //  strSQL += " ORDER BY REQ_NUM  desc ";
