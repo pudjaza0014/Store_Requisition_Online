@@ -71,8 +71,15 @@
                     <td style="width: 60%;">
                         <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="True" Width="300px" Font-Names="Century Gothic" Enabled="False" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged">
                             <asp:ListItem>Please Select ...</asp:ListItem>
-                            <asp:ListItem>SUBMIT</asp:ListItem>
                             <asp:ListItem>DRAFT</asp:ListItem>
+                            <asp:ListItem>INCOMPLETE</asp:ListItem>
+                            <asp:ListItem>INPROCESS</asp:ListItem>
+                            <asp:ListItem>APPROVED</asp:ListItem>
+                            <asp:ListItem>ON PROCESS PICKING</asp:ListItem>
+                            <asp:ListItem>SUBMIT</asp:ListItem>
+                            <asp:ListItem>ISSUE</asp:ListItem>
+                            <asp:ListItem>RECEIVED</asp:ListItem>
+
                         </asp:DropDownList>
                     </td>
                 </tr>
