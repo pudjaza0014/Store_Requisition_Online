@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StoreRequisition</RootNamespace>
     <AssemblyName>StoreRequisition</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -63,9 +63,9 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.DirectoryServices.Protocols" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -380,12 +380,14 @@
     </Compile>
     <Compile Include="Bootstrap_L.Master.cs">
       <DependentUpon>Bootstrap_L.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Bootstrap_L.Master.designer.cs">
       <DependentUpon>Bootstrap_L.Master</DependentUpon>
     </Compile>
     <Compile Include="Bootstrap_M.Master.cs">
       <DependentUpon>Bootstrap_M.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Bootstrap_M.Master.designer.cs">
       <DependentUpon>Bootstrap_M.Master</DependentUpon>
@@ -492,30 +494,35 @@
     </Compile>
     <Compile Include="Page\UserControls\ucPickingCenters.ascx.cs">
       <DependentUpon>ucPickingCenters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\UserControls\ucPickingCenters.ascx.designer.cs">
       <DependentUpon>ucPickingCenters.ascx</DependentUpon>
     </Compile>
     <Compile Include="Page\UserControls\ucRegularDetail.ascx.cs">
       <DependentUpon>ucRegularDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\UserControls\ucRegularDetail.ascx.designer.cs">
       <DependentUpon>ucRegularDetail.ascx</DependentUpon>
     </Compile>
     <Compile Include="Page\UserControls\ucStoreIssue.ascx.cs">
       <DependentUpon>ucStoreIssue.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\UserControls\ucStoreIssue.ascx.designer.cs">
       <DependentUpon>ucStoreIssue.ascx</DependentUpon>
     </Compile>
     <Compile Include="Page\UserControls\ucSupvApproveds.ascx.cs">
       <DependentUpon>ucSupvApproveds.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\UserControls\ucSupvApproveds.ascx.designer.cs">
       <DependentUpon>ucSupvApproveds.ascx</DependentUpon>
     </Compile>
     <Compile Include="Page\UserControls\ucUserReceived.ascx.cs">
       <DependentUpon>ucUserReceived.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\UserControls\ucUserReceived.ascx.designer.cs">
       <DependentUpon>ucUserReceived.ascx</DependentUpon>
