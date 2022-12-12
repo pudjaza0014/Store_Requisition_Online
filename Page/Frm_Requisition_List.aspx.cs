@@ -19,7 +19,7 @@ namespace StoreRequisition.Page
     {
 
         public string jobType { get; set; }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserAD"] == null)
@@ -28,7 +28,7 @@ namespace StoreRequisition.Page
                 Response.Redirect("~/Page/Frm_Login_R.aspx");
             }
 
-        jobType = Request.QueryString["jobType"];
+            jobType = Request.QueryString["jobType"];
 
             string pageName = string.Empty;
 
@@ -57,7 +57,7 @@ namespace StoreRequisition.Page
             Boolean results = true;
 
             if (Session["UserAD"] == null)
-            { 
+            {
                 Response.Redirect("~/Page/Frm_Login_R.aspx");
                 results = false;
             }
@@ -71,15 +71,41 @@ namespace StoreRequisition.Page
                     results = false;
                 }
             }
-
-
-
             return results;
+        }
+        public Boolean CheckingStore()
+        {
+            Boolean results = true;
+            try
+            {
 
+
+                if (Session["UserAD"] == null)
+                {
+                    Response.Redirect("~/Page/Frm_Login_R.aspx");
+                    results = false;
+                }
+                else
+                {
+                    UserAD userAD = new UserAD();
+                    userAD = (UserAD)Session["UserAD"];
+
+                    if (userAD.Departments == "STORE")
+                    {
+                        results = false;
+                    }
+                }
+                return results;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
 
-        [WebMethod] 
+        [WebMethod]
         public static IEnumerable<Requisition_List> GetData(String param1)
         {
             HttpContext.Current.Session["author"] = param1;
@@ -87,13 +113,13 @@ namespace StoreRequisition.Page
             DataTable dt = new DataTable();
             clsAuthenticate aAuthent = new clsAuthenticate();
             UserAD userAD = (UserAD)HttpContext.Current.Session["UserAD"];
-            dt = Objrun.GetRequisitionListAll(param1,  userAD);
+            dt = Objrun.GetRequisitionListAll(param1, userAD);
             List<Requisition_List> Results = new List<Requisition_List>();
 
             Requisition_List Result = new Requisition_List();
 
             foreach (DataRow row in dt.Rows)
-            { 
+            {
                 string Packing_by = "";
                 if (userAD.Departments.ToLower() == row["ACTIVITY_EN"].ToString())
                 {
@@ -116,7 +142,8 @@ namespace StoreRequisition.Page
                     {
                         Approve_by = "issue";
                     }
-                    else {
+                    else
+                    {
                         Approve_by = row["ACTIVITY_EN"].ToString();
                     }
 
@@ -124,7 +151,7 @@ namespace StoreRequisition.Page
 
 
 
-              //  string Approve_by = (userAD.InitName == row["ACTIVITY_EN"].ToString() ? row["ACTIVITY_EN"].ToString() : "");
+                //  string Approve_by = (userAD.InitName == row["ACTIVITY_EN"].ToString() ? row["ACTIVITY_EN"].ToString() : "");
                 Results.Add(new Requisition_List()
                 {
                     REQ_NUM = Convert.ToInt32(row["REQ_NUM"]),
@@ -146,7 +173,7 @@ namespace StoreRequisition.Page
 
 
         [WebMethod]
-        public  static IEnumerable<Requisition_List> GetDataXR(String param1, String param2 ,String param3)
+        public static IEnumerable<Requisition_List> GetDataXR(String param1, String param2, String param3)
         {
             HttpContext.Current.Session["author"] = param1;
             clsSQLscript Objrun = new clsSQLscript();
@@ -157,85 +184,85 @@ namespace StoreRequisition.Page
             try
             {
 
-            
 
 
-            UserAD userAD = (UserAD)HttpContext.Current.Session["UserAD"];
+
+                UserAD userAD = (UserAD)HttpContext.Current.Session["UserAD"];
                 List<Requisition_List> Results = new List<Requisition_List>();
 
                 if (userAD == null)
                 {
-                  return  Results.ToList();
+                    return Results.ToList();
                 }
-            dt = Objrun.GetRequisitionListAll(param1, param2, param3, userAD);
-            
+                dt = Objrun.GetRequisitionListAll(param1, param2, param3, userAD);
 
-            Requisition_List Result = new Requisition_List();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                string Packing_by = "";
-                if (userAD.Departments.ToLower() == row["ACTIVITY_EN"].ToString())
+                Requisition_List Result = new Requisition_List();
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    if (row["PROGRESS"].ToString() == "APPROVED")
+                    string Packing_by = "";
+                    if (userAD.Departments.ToLower() == row["ACTIVITY_EN"].ToString())
                     {
-                        // Packing_by = row["ACTIVITY_EN"].ToString();
-                        Packing_by = "<a href='Frm_report_R.aspx?RequestNo="+ row["REQ_NUM"].ToString() + "' class='btn btn-warning  mb-1 mb-lg-0 '><i class='fas fa-cart-arrow-down'></i> Picking</a>";
+                        if (row["PROGRESS"].ToString() == "APPROVED")
+                        {
+                            // Packing_by = row["ACTIVITY_EN"].ToString();
+                            Packing_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-warning  mb-1 mb-lg-0 '><i class='fas fa-cart-arrow-down'></i> Picking</a>";
+                        }
+                        else if (row["PROGRESS"].ToString() == "ON PROCESS PICKING")
+                        {
+                            // Packing_by = "on Process";
+
+                            Packing_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-warning  mb-1 mb-lg-0 disabled'  ><i class='fas fa-cart-arrow-down' ></i>in Process Picking</a>";
+                        }
+
                     }
-                    else if (row["PROGRESS"].ToString() == "ON PROCESS PICKING")
+
+                    string Approve_by = "";
+                    if (userAD.InitName == row["ACTIVITY_EN"].ToString())
                     {
-                        // Packing_by = "on Process";
+                        if (row["PROGRESS"].ToString() == "ISSUE")
+                        {                      //   Approve_by = "issue";
+                            Approve_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-danger mb-1 mb-lg-0'><i class='fas fa-dolly-flatbed'></i> Recieve</a>";
+                        }
+                        else
+                        {
+                            // Approve_by = row["ACTIVITY_EN"].ToString();
+                            Approve_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-primary mb-1 mb-lg-0'><i class='fas fa-file-signature'></i> Approve</a>";
+                        }
 
-                        Packing_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-warning  mb-1 mb-lg-0 disabled'  ><i class='fas fa-cart-arrow-down' ></i>in Process Picking</a>";
                     }
 
-                }
 
-                string Approve_by = "";
-                if (userAD.InitName == row["ACTIVITY_EN"].ToString())
-                {
-                    if (row["PROGRESS"].ToString() == "ISSUE")
-                    {                      //   Approve_by = "issue";
-                        Approve_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-danger mb-1 mb-lg-0'><i class='fas fa-dolly-flatbed'></i> Recieve</a>";
-                    }
-                    else
+                    if (param1 == "ReversePicking" && userAD.Departments.ToLower() == "store" && row["PROGRESS"].ToString() == "ON PROCESS PICKING")
                     {
-                        // Approve_by = row["ACTIVITY_EN"].ToString();
-                        Approve_by = "<a href='Frm_report_R.aspx?RequestNo=" + row["REQ_NUM"].ToString() + "' class='btn btn-primary mb-1 mb-lg-0'><i class='fas fa-file-signature'></i> Approve</a>";
+                        Approve_by = "<a href='#' onClick='ReversePicking(" + row["REQ_NUM"].ToString() + ")' class='btn btn-danger mb-1 mb-lg-0'><i class='fas fa-history'></i> REVERSE</a>";
+
                     }
 
+                    string Packing_flag = (row["PROGRESS"].ToString() == "PACKING" ? "1" : "0");
+                    //  string Approve_by = (userAD.InitName == row["ACTIVITY_EN"].ToString() ? row["ACTIVITY_EN"].ToString() : "");
+                    Results.Add(new Requisition_List()
+                    {
+                        REQ_NUM = Convert.ToInt32(row["REQ_NUM"]),
+                        //  REQ_BY = row["REQ_BY"].ToString(),
+                        //SEQ_APPROVED_BY = row["APPROVE_BY"].ToString(),
+                        APPROVED_BY = row["APPROVE_BY"].ToString(),
+                        SUB_INV = row["SUB_INV"].ToString(),
+                        TRANSFER_TO = row["TRANSFER_TO"].ToString(),
+                        STATUS = row["PROGRESS"].ToString(),
+                        STATE_NEW = row["StateNew"].ToString(),
+                        DELIVERY_STATE = row["DELIVERY_STATION"].ToString(),
+                        REQ_APPROVE_BY = Approve_by,
+                        PACKING = Packing_by
+                    });
                 }
-
-
-                if(param1 == "ReversePicking" && userAD.Departments.ToLower()=="store" && row["PROGRESS"].ToString() == "ON PROCESS PICKING")
-                {
-                    Approve_by = "<a href='#' onClick='ReversePicking(" + row["REQ_NUM"].ToString() + ")' class='btn btn-danger mb-1 mb-lg-0'><i class='fas fa-history'></i> REVERSE</a>";
-
-                }
-
-                string Packing_flag = (row["PROGRESS"].ToString() == "PACKING" ? "1" : "0");
-              //  string Approve_by = (userAD.InitName == row["ACTIVITY_EN"].ToString() ? row["ACTIVITY_EN"].ToString() : "");
-                Results.Add(new Requisition_List()
-                {
-                    REQ_NUM = Convert.ToInt32(row["REQ_NUM"]),
-                    //  REQ_BY = row["REQ_BY"].ToString(),
-                    //SEQ_APPROVED_BY = row["APPROVE_BY"].ToString(),
-                    APPROVED_BY = row["APPROVE_BY"].ToString(),
-                    SUB_INV = row["SUB_INV"].ToString(),
-                    TRANSFER_TO = row["TRANSFER_TO"].ToString(),
-                    STATUS = row["PROGRESS"].ToString(),
-                    STATE_NEW = row["StateNew"].ToString(),
-                    DELIVERY_STATE = row["DELIVERY_STATION"].ToString(),
-                    REQ_APPROVE_BY = Approve_by,
-                    PACKING = Packing_by
-                });
-            }
-            return Results.ToList();
+                return Results.ToList();
 
             }
             catch (Exception ex)
             {
-                HttpContext.Current.Session.Clear(); 
+                HttpContext.Current.Session.Clear();
                 throw;
             }
         }
@@ -269,6 +296,25 @@ namespace StoreRequisition.Page
             {
 
                 throw;
+            }
+        }
+
+        [WebMethod]
+        public static IEnumerable<string> TredingGenerateRequisition()
+        {
+            List<string> arr = new List<string>();
+            try
+            {
+                ClassDB db = new ClassDB();
+             //   arr = db.Requisition_Trading_Generate();
+
+                return arr; 
+                 
+            }
+            catch (Exception ex)
+            {
+
+                return  arr = new List<string>() { "Error" ,ex.Message};
             }
         }
 

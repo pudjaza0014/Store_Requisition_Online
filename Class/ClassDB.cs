@@ -362,6 +362,58 @@ public class ClassDB
         }
 
     }
+    public List<string> Requisition_Trading_Generate(string Due_date)
+    {
+        try
+        {
+            UserAD userAD = (UserAD)HttpContext.Current.Session["UserAD"];
+
+
+
+
+            using (OracleConnection conn = new OracleConnection())
+            {
+                conn.ConnectionString = "User Id=apps;Password=apps;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.234.40)(PORT=1530))(CONNECT_DATA=(SID=prod)));";
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "MMT_STORE_REQ_TREDING";
+                    cmd.CommandType = CommandType.StoredProcedure; 
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_DUE_DATE", Direction = ParameterDirection.Input, Value = Due_date });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_LOCATION", Direction = ParameterDirection.Input, Value = "MMCT" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_DELIVERY_STATION", Direction = ParameterDirection.Input, Value = "PRODUCTION" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_TEL", Direction = ParameterDirection.Input, Value = "4124" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_REQUEST_BY", Direction = ParameterDirection.Input, Value = userAD.InitName });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_ISSUE_TYPE", Direction = ParameterDirection.Input, Value = "MATERIAL TRANSFER" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_SUB_INV", Direction = ParameterDirection.Input, Value = "WH-TB" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_REMARK", Direction = ParameterDirection.Input, Value = "TRADING" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_APPROVEDNAME", Direction = ParameterDirection.Input, Value = "TRADING" });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_REQ_NUM", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 100 });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_APPROVE_BY", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 100 });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_ACTION_BY", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 100 });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_RESULT", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 100 });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "P_ERROR_MSG", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 1000 });
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+
+
+                    List<string> arrResult = new List<string>();
+                    arrResult.Add((String)cmd.Parameters["P_RESULT"].Value.ToString().Trim());
+                    arrResult.Add((String)cmd.Parameters["P_ERROR_MSG"].Value.ToString().Trim());
+
+                    return arrResult;
+                }
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
 
     public List<string> Requisition_cancel_picking(UserAD P_ACTION_BY, string req_num)
     {

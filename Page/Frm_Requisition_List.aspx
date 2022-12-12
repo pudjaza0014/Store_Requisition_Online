@@ -57,8 +57,20 @@
                                     <%
                                         if (CheckingGuest())
                                         {
+                                    %> 
+                                    <a href="Frm_Requisition.aspx" class="btn btn-success"><i class="fas fa-plus"></i>New Requisition</a> 
+                                    <%
+                                        if (!CheckingStore())
+                                        {
+
                                     %>
-                                    <a href="Frm_Requisition.aspx" class="btn btn-success"><i class="fas fa-plus"></i>New Requisition</a>
+                                    <%--<a href="Frm_Requisition.aspx" class="btn btn-warning"><i class="fas fa-plus"></i>Trending Requisition</a>--%>
+                                    <%--<button  class="btn btn-warning" id="btnTrdGet"><i class="fas fa-plus"></i>Trending Requisition</button>--%>
+                                    <a href="Frm_Requisition_Trading.aspx" class="btn btn-warning"><i class="fas fa-plus"></i>Trading Requisition</a> 
+
+                                    <%
+                                        }
+                                    %>
                                     <%
                                         }
                                     %>

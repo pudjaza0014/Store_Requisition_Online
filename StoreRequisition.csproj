@@ -76,6 +76,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\air_datepicker\air_datepickier.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -127,6 +128,7 @@
     <Content Include="Page\Frm_Requisition_List.aspx" />
     <Content Include="Page\Frm_Requisition_Maintenance.aspx" />
     <Content Include="Page\Frm_Requisition_monitoring.aspx" />
+    <Content Include="Page\Frm_Requisition_Trading.aspx" />
     <Content Include="Page\Frm_Send_Requisition.aspx" />
     <Content Include="Page\Frm_Requisition.aspx" />
     <Content Include="Page\Frm_Report.aspx" />
@@ -136,6 +138,7 @@
     <Content Include="Page\UserControls\ucSupvApproveds.ascx" />
     <Content Include="Page\UserControls\ucUserReceived.ascx" />
     <Content Include="Pictures\Purchse.jpg" />
+    <Content Include="Scripts\air-Datapicker\air_datepicker.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -470,6 +473,13 @@
     </Compile>
     <Compile Include="Page\Frm_Requisition_monitoring.aspx.designer.cs">
       <DependentUpon>Frm_Requisition_monitoring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Trading.aspx.cs">
+      <DependentUpon>Frm_Requisition_Trading.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Trading.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_Trading.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Frm_Send_Requisition.aspx.cs">
       <DependentUpon>Frm_Send_Requisition.aspx</DependentUpon>

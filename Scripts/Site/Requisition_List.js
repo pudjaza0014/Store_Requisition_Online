@@ -3,6 +3,13 @@
 
 $(document).ready(function () {
     getData(); 
+
+    $("#btnTrdGet").on("click", function () {
+       // alert("test");
+       
+        TredingGenerateRequisition();
+
+    });
 }); 
 
 function getData() {
@@ -135,10 +142,10 @@ function ReversePicking(strReq_nun) {
 
 
     var confirms = confirm("Are you sure to 'Reverse Picking ??")
-    if (confirms ==true) {
+    if (confirms == true) {
 
-    
-    var obj = { Requisition : strReq_nun}
+
+        var obj = { Requisition: strReq_nun }
 
         $.ajax({
             url: 'Frm_Requisition_List.aspx/ReversePickingProcess',
@@ -157,3 +164,27 @@ function ReversePicking(strReq_nun) {
         });
     }
 };
+
+
+function TredingGenerateRequisition() { 
+    
+
+    
+
+        $.ajax({
+            url: 'Frm_Requisition_List.aspx/TredingGenerateRequisition', 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: "POST",
+            success: function (data) {
+                debugger
+                return data;
+            },
+            error: function (ex) {
+                alert('error!' + ex.responseText);
+                console.log(ex.responseText);
+                return;
+            }
+        });
+ 
+}
