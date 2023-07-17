@@ -312,10 +312,18 @@ public partial class Frm_Send_Requisition : System.Web.UI.Page
 
         dt = objRun.GetRequisitionListLF("", "LF", "", strTransferType, userAD);
         
-        if (dt.Rows.Count > 0)
+        //if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
         {
             string[] colomn = new[] { "REQ_NUM", "PROGRESS", "REQ_BY", "REQ_BY_TEL", "REQ_LOCATION", "TRANSFER_TO", "DELIVERY_STATION" };            
             DataTable dt1 = new DataView(dt).ToTable(false, colomn);            
+            dgvLFRequisitionList.DataSource = dt1;
+            dgvLFRequisitionList.DataBind();
+        }
+        else
+        {
+            string[] colomn = new[] { "REQ_NUM", "PROGRESS", "REQ_BY", "REQ_BY_TEL", "REQ_LOCATION", "TRANSFER_TO", "DELIVERY_STATION" };
+            DataTable dt1 = new DataView(dt).ToTable(false, colomn);
             dgvLFRequisitionList.DataSource = dt1;
             dgvLFRequisitionList.DataBind();
         }

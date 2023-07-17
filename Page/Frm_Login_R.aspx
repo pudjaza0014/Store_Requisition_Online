@@ -74,10 +74,9 @@
 
         body {
             background: #f00; /* fallback for old browsers */
-          
-            /*background: rgb(255,255,255);*/ 
-        /*background: rgb(181,209,236);*/
-background: linear-gradient(180deg, rgba(181,215,247,1) 0%, rgba(255,255,255,1) 70%);
+            /*background: rgb(255,255,255);*/
+            /*background: rgb(181,209,236);*/
+            background: linear-gradient(180deg, rgba(181,215,247,1) 0%, rgba(255,255,255,1) 70%);
             background-attachment: fixed;
             font-family: "Roboto", sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -88,7 +87,7 @@ background: linear-gradient(180deg, rgba(181,215,247,1) 0%, rgba(255,255,255,1) 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="login-page">
         <div class="form">
-            <h1 class="text-white">STORE'S MATERIAL REQUISITION ONLINE</h1>
+            <h1 class="text-white">STORE'S MATERIAL REQUISITION ONLINE </h1>
             <hr />
             <form class="login-form" runat="server">
                 <div class="form-group">
@@ -99,9 +98,13 @@ background: linear-gradient(180deg, rgba(181,215,247,1) 0%, rgba(255,255,255,1) 
                     <label for="txtPassword" class="text-white-50">PASSWORD</label>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control form-control-lg" TextMode="Password"></asp:TextBox>
                 </div>
-                <asp:Button ID="btnLogin" runat="server" Font-Bold="False" Font-Names="Century Gothic" OnClick="btnLogin_Click" TabIndex="30" Text="Login" CssClass="btn btn-lg btn-primary btn-block" /> 
-                <p class="text-white mt-3"><b>MSG :</b>
-                    <asp:Label ID="lblMSG" runat="server" Font-Names="Century Gothic" Text=""></asp:Label></p>
+                <asp:Button ID="btnLogin" runat="server" Font-Bold="False" Font-Names="Century Gothic" OnClick="btnLogin_Click" TabIndex="30" Text="Login" CssClass="btn btn-lg btn-primary btn-block" />
+                <p class="text-white mt-3">
+                    <b>MSG :</b>
+                    <asp:Label ID="lblMSG" runat="server" Font-Names="Century Gothic" Text=""></asp:Label>
+                </p>
+
+
             </form>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title>SMRO - 2.0.9</title>
+    <title>SMRO - 2.0.0.19</title> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,7 @@
 <body>
     <div class=" ">
         <nav class="navbar navbar-expand-lg navbar-dark bg-MMCT " id="topbars">
-            <a class="navbar-brand font-weight-bolder" href="#">Store&#39;s Material Requisition Online <span style="font-size:11px;">2.0.9</span></a>
+            <a class="navbar-brand font-weight-bolder" href="#"> <span style="font-size:11px;">2.0.0.19</span></a>
             <div class="navbar-nav ml-auto">
                 <asp:Label ID="lblNames" runat="server" CssClass="text-white-50" Text="Hi!"></asp:Label>
             </div>

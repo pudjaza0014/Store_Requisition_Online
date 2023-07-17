@@ -107,6 +107,13 @@
                                                 <option value="">ALL</option>
                                                 <option value="MMCT">MMCT</option>
                                                 <option value="LF">LF</option>
+                                               <%-- <option value="Store B4">Store B4</option>
+                                                <option value="Store B15">Store B15</option>
+                                                <option value="W/H Hora">W/H Hora</option>
+                                                <option value="LF Chemical">LF Chemical</option>
+                                                <option value="LF RM">LF RM</option>
+                                                <option value="Spare Part B4">Spare Part B4</option>
+                                                <option value="Spare Part B2">Spare Part B2</option>--%>
                                             </select>
                                         </div>                                        
                                     </div>
@@ -115,6 +122,8 @@
                             <div class=" table-responsive" style="height: 70vh;">
                                 <div class="">
                                     <table id="tbl" class="table table-striped bg-white text-center w-100">
+                                        
+
                                     </table>
                                 </div>
                             </div>

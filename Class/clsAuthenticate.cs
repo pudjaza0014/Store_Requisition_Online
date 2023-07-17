@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.DirectoryServices;
+using System.Management.Instrumentation;
+using static System.Net.Mime.MediaTypeNames;
 
 public class clsAuthenticate
 {
@@ -169,9 +171,11 @@ public class clsAuthenticate
             DirectorySearcher search = new DirectorySearcher(entry);
 
             search.Filter = "(SAMAccountName=" + username + ")";
+           // search.Filter = "maxPwdAge=*";
             search.PropertiesToLoad.Add("employeeID");
             search.PropertiesToLoad.Add("cn");
-             
+            search.PropertiesToLoad.Add("pwdLastSet");
+
             SearchResult result = search.FindOne();
 
             if (result == null)
@@ -183,6 +187,18 @@ public class clsAuthenticate
             _path = result.Path;
             _filterAttribute = (string)result.Properties["cn"][0];
 
+            long maxDays = 0;
+            Int64 test  = (Int64)result.Properties["pwdLastSet"][0];
+
+            var accountExpires = test;
+            var setDate = new DateTime(1601, 01, 01, 0, 0, 0, DateTimeKind.Utc).AddTicks(accountExpires);
+
+            var nowDate = DateTime.Now;
+
+
+            double test2 = (nowDate - setDate).TotalDays;
+
+            var Result = (90 - test2) <4?"error":"OK";
 
             //test
             //DirectoryEntry entry1 = new DirectoryEntry("LDAP://mmct_domain");
@@ -194,19 +210,7 @@ public class clsAuthenticate
             //SearchResult result1 = search1.FindOne();
             //var strDepartments = result1.Properties["employeeid"];
             //var strDepartments2 = result1.Properties["cn"][0];
-            //test
-
-
-
-
-
-
-
-
-
-
-
-
+            //test 
             if (result.Properties["employeeID"].Count == 0)
             {
                 if (_filterAttribute.Contains("store")|| _filterAttribute.Contains("AS400"))
@@ -224,6 +228,88 @@ public class clsAuthenticate
 
         return true;
     }
+
+    public mdResultReturn IsAuthoritications(string domain ,string username , string pwd)
+    {
+        mdResultReturn results= new mdResultReturn();
+        try
+        {
+            string domainAndUsername = (domain + "\\") + username;
+            DirectoryEntry entry = new DirectoryEntry(this.strDomain, domainAndUsername, pwd);
+            //Bind to the native AdsObject to force authentication.
+            object obj = entry.NativeObject;
+
+            DirectorySearcher search = new DirectorySearcher(entry);
+
+            search.Filter = "(SAMAccountName=" + username + ")";
+            // search.Filter = "maxPwdAge=*";
+            search.PropertiesToLoad.Add("employeeID");
+            search.PropertiesToLoad.Add("cn");
+            search.PropertiesToLoad.Add("pwdLastSet");
+
+            SearchResult result = search.FindOne();
+
+            if (result == null)
+            {
+
+
+                results = new mdResultReturn()
+                {
+                    blResult = false,
+                    strResult = "Error",                    
+                    strResultError = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง"
+                };
+                return results;
+            }
+
+            //Update the new path to the user in the directory.
+            _path = result.Path;
+            _filterAttribute = (string)result.Properties["cn"][0];
+
+            long maxDays = 0;
+            Int64 test = (Int64)result.Properties["pwdLastSet"][0];
+
+            var accountExpires = test;
+            var setDate = new DateTime(1601, 01, 01, 0, 0, 0, DateTimeKind.Utc).AddTicks(accountExpires);
+
+            var nowDate = DateTime.Now; 
+            double test2 = (nowDate - setDate).TotalDays;
+
+            var Result = (90 - test2) < 4 ? "error" : "OK"; 
+
+
+
+            if (result.Properties["employeeID"].Count == 0)
+            {
+                if (_filterAttribute.Contains("store") || _filterAttribute.Contains("AS400"))
+                {
+                    //  return true;
+
+                    results = new mdResultReturn()
+                    {
+                        blResult = true,
+                        strResult = "OK",
+                        strResultError = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง"
+                    };
+                    return results;
+                }
+            }
+
+
+
+
+            return results;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+     
+
+
     public UserAD GetAuthenticated(string domain, string username, string pwd)
     {
         string domainAndUsername = (domain + "\\") + username;
@@ -239,7 +325,8 @@ public class clsAuthenticate
             search.Filter = "(SAMAccountName=" + username + ")";
             search.PropertiesToLoad.Add("employeeID");
             search.PropertiesToLoad.Add("cn");
-            search.PropertiesToLoad.Add("department");            
+            search.PropertiesToLoad.Add("department");
+            search.PropertiesToLoad.Add("lastLogon");
 
             SearchResult result = search.FindOne();
 
@@ -251,6 +338,12 @@ public class clsAuthenticate
             _filterAttribute = result.Properties["cn"].Count != 0 ? (string)result.Properties["cn"][0] : "";
             _filterAttribute2 = result.Properties["employeeID"].Count == 0 ? "": (string)result.Properties["employeeID"][0];
             _filterAttribute3 = result.Properties["department"].Count != 0 ? (string)result.Properties["department"][0]: "";
+
+            Int64 test_LastLogOn = (Int64)result.Properties["lastLogon"][0];
+
+            var accountExpires = test_LastLogOn;
+            var setDate = new DateTime(1601, 01, 01, 0, 0, 0, DateTimeKind.Utc).AddTicks(accountExpires);
+            var settest = new DateTime((long)accountExpires);
 
             UserAD userAD = new UserAD(); 
            

@@ -71,8 +71,15 @@
                         <asp:DropDownList ID="ddlLocation" runat="server" AutoPostBack="True" Width="300px" OnSelectedIndexChanged="ddlLocation_SelectedIndexChanged" Font-Names="Century Gothic">
                             <asp:ListItem>Please Select ...</asp:ListItem>
                             <asp:ListItem>MMCT</asp:ListItem>
-                            <asp:ListItem>MPCT</asp:ListItem>
+                            <%--<asp:ListItem>MPCT</asp:ListItem>--%>
                             <asp:ListItem>LF</asp:ListItem>
+                           <%-- <asp:ListItem>Store B4</asp:ListItem>
+                            <asp:ListItem>Store B15</asp:ListItem>
+                            <asp:ListItem>W/H Hora</asp:ListItem>
+                            <asp:ListItem>LF Chemical</asp:ListItem>
+                            <asp:ListItem>LF RM</asp:ListItem>
+                            <asp:ListItem>Spare Part B4</asp:ListItem>
+                            <asp:ListItem>Spare Part B2</asp:ListItem> --%>
                         </asp:DropDownList>
                     </td>
                 </tr>

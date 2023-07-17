@@ -132,7 +132,7 @@ function readDataTable() {
                 // Table
                 var strItemNo = cell_Item.childNodes[0].textContent;
                 var strItemName = cell_Item_Name.childNodes[0].textContent;
-                var strReq_Qty = cell_ReqQty.childNodes[0].textContent;
+                var strReq_Qty = cell_ReqQty.childNodes[0].textContent.replace(",", "");
                 // TextBox
                 var ActualQty = $("#" + cnActualQty).val();
                 var req_num = $("#" + cnReq_Num).val();

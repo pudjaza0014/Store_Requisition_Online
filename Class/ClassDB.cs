@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Net.NetworkInformation;
 using StoreRequisition.Models;
+using static iTextSharp.text.pdf.AcroFields;
 
 public class ClassDB
 {
@@ -606,65 +607,120 @@ public class ClassDB
 
     }
 
-    //public  void test()
-    //{
-    //    using (OracleConnection objConn = new OracleConnection(strConnOraString))
-    //    {
-    //        OracleCommand objCmd = new OracleCommand();
-    //        objCmd.Connection = objConn;
-    //        objCmd.CommandText = "MMTSFC.TRIGGER_SERVICE.MOVE_TRIGGER";
-    //        objCmd.CommandType = CommandType.StoredProcedure;
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_JOB_NO", Direction = ParameterDirection.Input, Value = p_job });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_OPER_SEQ", Direction = ParameterDirection.Input, Value = p_oper_seq });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_OPER_CODE", Direction = ParameterDirection.Input, Value = p_oper_code });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_PROD_LINE_NAME", Direction = ParameterDirection.Input, Value = p_producton_line });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_STEP", Direction = ParameterDirection.Input, Value = p_step_name });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "I_CREATE_BY", Direction = ParameterDirection.Input, Value = p_create_by });
+    public bool TransferData(TransferItemlist item)
+    {
+        List<string> arrResult = new List<string>();
+        try
+        {
+            using (OracleConnection conn = new OracleConnection())
+            {
+                conn.ConnectionString = "User Id=apps;Password=apps;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.234.40)(PORT=1530))(CONNECT_DATA=(SID=prod)));";
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "APPS.Mmt_Inv_Oracle_Interface.MOVE_TO_ST_TEMP";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_USER_ID", Direction = ParameterDirection.Input, Value = item.UserID });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_FROM_ORG_ID", Direction = ParameterDirection.Input, Value = item.PP_FROM_ORG_ID });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_FROM_SUBINVENTORY", Direction = ParameterDirection.Input, Value = item.PP_FROM_SUBINVENTORY });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_FROM_LOCATOR_ID", Direction = ParameterDirection.Input, Value =  (item.PP_FROM_LOCATOR_ID == null) ? DBNull.Value : (object)item.PP_FROM_LOCATOR_ID
+                });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_TO_ORG_ID", Direction = ParameterDirection.Input, Value = item.PP_TO_ORG_ID });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_TO_SUBINVENTORY", Direction = ParameterDirection.Input, Value = item.PP_TO_SUBINVENTORY });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_TO_LOCATOR_ID", Direction = ParameterDirection.Input, Value = item.PP_TO_LOCATOR_ID });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PP_LOT_LIST", Direction = ParameterDirection.Input, Value = item.PP_LOT_LIST });
+                    conn.Open();
+                    OracleTransaction transaction = conn.BeginTransaction();
+                    try
+                    {          
+                        cmd.Transaction = transaction;
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        arrResult.Add("OK");
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                    }
+                }
+            }
 
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "O_RES_CODE", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 100 });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "O_RES_MSG", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 1000 });
-    //        objCmd.Parameters.Add(new OracleParameter { ParameterName = "O_RES_DATA", Direction = ParameterDirection.Output, OracleType = OracleType.Char, Size = 1000 });
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        } 
+    }
+
+    public bool BudgetControl_Operation(BudgetControl item)
+    {
+        List<string> arrResult = new List<string>();
+        try
+        {
+            using (OracleConnection conn = new OracleConnection())
+            {
+                conn.ConnectionString = "User Id=apps;Password=apps;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.234.40)(PORT=1530))(CONNECT_DATA=(SID=prod)));";
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "MMTMRQ_BUDGET_CONTROL_OP";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_OPERATION", Direction = ParameterDirection.Input, Value = item.Operation });
+
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_PERIODNAME", Direction = ParameterDirection.Input, Value = item.Period.PerioldName });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_BUDGETNAME", Direction = ParameterDirection.Input, Value = item.Period.BudgetName });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_BUDGETAMOUNT", Direction = ParameterDirection.Input, Value = item.Period.InitialBudgetAmount });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_REMARK", Direction = ParameterDirection.Input, Value = item.Period.Remark != null ? (object)item.Period.Remark : DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_TRANS_DATE", Direction = ParameterDirection.Input, Value = item.transection.DocumentTransDate });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_NO", Direction = ParameterDirection.Input, Value = item.transection.DocumentNumber });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_AMOUNT", Direction = ParameterDirection.Input, Value = item.transection.Amount });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_TYPE", Direction = ParameterDirection.Input, Value = item.transection.Document_Type });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_TRANSACTION_TYPE", Direction = ParameterDirection.Input, Value = item.transection.Transaction_Type != null ? (object)item.transection.Transaction_Type : DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_ACTION", Direction = ParameterDirection.Input, Value = item.transection.Action });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_REFER_DOC_NO", Direction = ParameterDirection.Input, Value = item.transection.ReferDocumentNumber != null ? (object)item.transection.ReferDocumentNumber : DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "DOC_REMARK", Direction = ParameterDirection.Input, Value = item.transection.Remark != null ? (object)item.transection.Remark : DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter { ParameterName = "PE_OPERATOR_EN", Direction = ParameterDirection.Input, Value = item.EN });                    
+                    conn.Open();
+                    OracleTransaction transaction = conn.BeginTransaction();
+                    try
+                    {
+                        cmd.Transaction = transaction;
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        arrResult.Add("OK");
+                        return true;
+                    }
+                    catch (OracleException ex)
+                    {
+                        transaction.Rollback();                       
+                        string errorMessage = ex.Message;
+                        string[] array = ex.Message.Split(':');
+                        string errMsg = array[1];
+                        throw new Exception(errMsg);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
 
 
-    //        try
-    //        {
-    //            objConn.Open();
-    //            objCmd.ExecuteNonQuery();
-
-    //            rs_code = (String)objCmd.Parameters["O_RES_CODE"].Value.ToString().Trim();
-
-    //            if (rs_code == "000")
-    //            {
-    //                objConn.Close();
-    //                return "Y";
-
-    //            }
-    //            else
-    //            {
-    //                rs_msg = (String)objCmd.Parameters["O_RES_MSG"].Value;
-    //                rs_data = (String)objCmd.Parameters["O_RES_DATA"].Value;
-    //                objConn.Close();
-    //                gridOperationList.Enabled = false;
-    //                string scripts = "showWanning('ระบบตรวจสอบ JOB :" + txtJobNo.Text.Trim() + "','" + rs_msg.ToString() + " : " + rs_data.ToString().Replace("\r", "\\n").Replace('"', ' ').Replace(":", " : ") + "','กรุณาลองค้นหาใหม่อีกครับ หรือติดต่อ Supp, Leader เพื่อปลดล็อค Move ','Call MMTSFC.TRIGGER_SERVICE.MOVE_TRIGGER()','Warning Message.');";
-    //                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", scripts, true);
-    //                return "N";
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            System.Console.WriteLine("Exception: {0}", ex.ToString());
-    //            string script = "showWanning('Jobname :" + txtJobNo.Text.Trim() + ",Exception :Execute package Oracle !!!','กรุณาลองใหม่อีกครั้ง หรือลองปิด เปิดโปรแกรมแล้วลองใหม่ ','" + ex.ToString() + "','Call MMTSFC.TRIGGER_SERVICE.MOVE_TRIGGER() ','Error');";
-    //            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-    //        }
-
-    //    }
-    //}
-
-
-
-
-
-
+     
     public DataTable GetDataOra()
     {
         DataTable Dt = new DataTable();

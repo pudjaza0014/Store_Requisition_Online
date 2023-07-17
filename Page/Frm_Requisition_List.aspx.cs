@@ -19,7 +19,6 @@ namespace StoreRequisition.Page
     {
 
         public string jobType { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserAD"] == null)

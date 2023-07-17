@@ -27,19 +27,26 @@
                             <div class="form-group">
                                 <div class="row mb-1">
                                     <div class="col-md-3">
-                                        <div class ="text-right">
-                                            <div class="col"> <label for="DatePick">Date : </label></div></div></div>
-                                    <div class="col-md-3"><input type="text" name="DatePick" id="DatePick" value="" placeholder="Click for choose" autocomplete="off" class="form-control" /></div>
-                                    <div class="col-md-3"> <asp:TextBox id="DatePick2" name="DatePick2" runat="server" AutoCompleteType="Disabled" CssClass="form-control form-control-plaintext"  ></asp:TextBox></div>
-                                </div>
-                               
-                                   
-                                <div class="row">
-                                    <div class="offset-md-3 col-md-3">
-                                         <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Generate" OnClick="Button1_Click" />
+                                        <div class="text-right">
+                                            <div class="col">
+                                                <label for="DatePick">Deu Date : </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" name="DatePick" id="DatePick" value="" placeholder="Click for choose" autocomplete="off" class="form-control" />
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <asp:TextBox ID="DatePick2" name="DatePick2" runat="server" AutoCompleteType="Disabled" CssClass="form-control form-control-plaintext"></asp:TextBox>
                                     </div>
                                 </div>
-                               
+                                <div class="row">
+                                    <div class="offset-md-3 col-md-3">
+                                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Generate" OnClick="Button1_Click" />
+                                    </div>
+                                </div>
+
                             </div>
                         </form>
 

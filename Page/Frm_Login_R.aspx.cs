@@ -1,5 +1,6 @@
 ﻿using StoreRequisition.Class;
 using StoreRequisition.Models;
+using StoreRequisition.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace StoreRequisition.Page
             {
                 Cache.Remove(allCaches.Key.ToString());
             }
+
+
+
+
+
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -47,94 +53,103 @@ namespace StoreRequisition.Page
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!aAuthent.SetDomain("mmct_domain"))
+            try
             {
-                lblMSG.Text = "โดมเมนในระบบผิดพลาด โปรดแจ้งผู้ดูแลระบบ";
-                return;
-                // throw new Exception("โดมเมนในระบบผิดพลาด โปรดแจ้งผู้ดูแลระบบ");
-            }
 
-            // check if user supplied username properly
-            //if (!aAuthent.SetUser(txt_UserName.Text.ToLower()))
-            if (!aAuthent.SetUser(txtUsername.Text.ToLower()))
-            {
-                throw new Exception("Please provide an username");
-                //Login1.InstructionText = "Please provide an username"
-                //MessageBox.Show("Please provide an username")                
-            }
 
-            // now check if password is supplied
-            if (!aAuthent.SetPass(txtPassword.Text.Trim()))
-            {
-                lblMSG.Text = "Please provide a password";
-                return;
-                //throw new Exception("Please provide a password");
-            }
-
-            if (aAuthent.IsAuthenticated("mmct_domain", txtUsername.Text.ToLower(), txtPassword.Text.Trim()) == false)
-            {
-                clsSQLscript objRun = new clsSQLscript();
-                DataTable dt = new DataTable();
-                dt = objRun.getuserGuest(txtUsername.Text.ToLower(), txtPassword.Text.Trim().ToLower());
-                if (dt.Rows.Count > 0)
+                if (!aAuthent.SetDomain("mmct_domain"))
                 {
-                    DataRow dr = dt.Rows[0];
-                    UserAD userAD = new UserAD(); 
-                    userAD.InitName = dr["ID"].ToString();
-                    userAD.EN = dr["EN"].ToString();
-                    userAD.Departments = dr["DEPARTMENTS"].ToString();
-                    userAD.Authority = "Guest";
+                    lblMSG.Text = "โดมเมนในระบบผิดพลาด โปรดแจ้งผู้ดูแลระบบ";
+                    return;
+                    // throw new Exception("โดมเมนในระบบผิดพลาด โปรดแจ้งผู้ดูแลระบบ");
+                }
+
+                // check if user supplied username properly
+                //if (!aAuthent.SetUser(txt_UserName.Text.ToLower()))
+                if (!aAuthent.SetUser(txtUsername.Text.ToLower()))
+                {
+                    throw new Exception("Please provide an username");
+                    //Login1.InstructionText = "Please provide an username"
+                    //MessageBox.Show("Please provide an username")                
+                }
+
+                // now check if password is supplied
+                if (!aAuthent.SetPass(txtPassword.Text.Trim()))
+                {
+                    lblMSG.Text = "Please provide a password";
+                    return;
+                    //throw new Exception("Please provide a password");
+                }
+                //var test = aAuthent.getUserAD(txtUsername.Text.ToLower());
+                if (aAuthent.IsAuthenticated("mmct_domain", txtUsername.Text.ToLower(), txtPassword.Text.Trim()) == false)
+                {
+                    clsSQLscript objRun = new clsSQLscript();
+                    DataTable dt = new DataTable();
+                    dt = objRun.getuserGuest(txtUsername.Text.ToLower(), txtPassword.Text.Trim().ToLower());
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow dr = dt.Rows[0];
+                        UserAD userAD = new UserAD();
+                        userAD.InitName = dr["ID"].ToString();
+                        userAD.EN = dr["EN"].ToString();
+                        userAD.Departments = dr["DEPARTMENTS"].ToString();
+                        userAD.Authority = "Guest";
 
 
-                    Session["UserAD"] = userAD;
+                        Session["UserAD"] = userAD;
 
-                    userAD = new UserAD();
+                        userAD = new UserAD();
+                        userAD = (UserAD)Session["UserAD"];
+                        if (userAD.InitName == null)
+                        {
+                            lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง";
+                            return;
+                        }
+
+                        Session["lblnames"] = userAD.Departments;
+
+                        Response.Redirect("~/Page/Frm_Requisition_List.aspx?jobType=ActOwner");
+                    }
+                    else
+                    {
+                        lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง >>กรณีที่ไม่สามารถเข้าระบบเพื่อ Approved ได้ กรุณาทำตามขั้นตอนดังต่อไปนี้ <a href=\"../PDF/Password_Expired.pdf\" class='btn btn-primary'  target=\"_blank\" >คลิก</a>";
+                        return;
+                    }
+
+
+
+                    // throw new Exception("รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง");
+                }
+                else
+                {
+
+                    Session["UserAD"] = aAuthent.GetAuthenticated("mmct_domain", txtUsername.Text.ToLower(), txtPassword.Text.Trim());
+                    UserAD userAD = new UserAD();
                     userAD = (UserAD)Session["UserAD"];
                     if (userAD.InitName == null)
                     {
-                        lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง";
+                        lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง  >>กรณีที่ไม่สามารถเข้าระบบเพื่อ Approved ได้ กรุณาทำตามขั้นตอนดังต่อไปนี้ <a href=\"../PDF/Password_Expired.pdf\" class='btn btn-primary'  target=\"_blank\" >คลิก</a>";
                         return;
                     }
 
                     Session["lblnames"] = userAD.Departments;
+                    //else
+                    //{
+                    //    Session["UserData"] = aAuthent.GetUserData((string)Session["UserAD"]);
+                    //}
+
+
+                    txtUsername.Text.ToLower();
+                    //  Response.Redirect("~/Page/Frm_Send_Requisition.aspx");
 
                     Response.Redirect("~/Page/Frm_Requisition_List.aspx?jobType=ActOwner");
                 }
-                else
-                {
-                    lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง";
-                    return;
-                }
-
-
-
-                // throw new Exception("รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง");
             }
-            else
+            catch (Exception ex)
             {
 
-                Session["UserAD"] = aAuthent.GetAuthenticated("mmct_domain", txtUsername.Text.ToLower(), txtPassword.Text.Trim());
-                UserAD userAD = new UserAD();
-                userAD = (UserAD)Session["UserAD"];
-                if (userAD.InitName == null)
-                {
-                    lblMSG.Text = "รหัสผ่านไม่ถูกโปรดใส่ใหม่อีกครั้ง";
-                    return;
-                }
-
-                Session["lblnames"] = userAD.Departments;
-                //else
-                //{
-                //    Session["UserData"] = aAuthent.GetUserData((string)Session["UserAD"]);
-                //}
-
-
-                txtUsername.Text.ToLower();
-                //  Response.Redirect("~/Page/Frm_Send_Requisition.aspx");
-
-                Response.Redirect("~/Page/Frm_Requisition_List.aspx?jobType=ActOwner");
+                lblMSG.Text = ex.Message; return;
             }
-
         }
 
         protected void btnClear_Click(object sender, EventArgs e)

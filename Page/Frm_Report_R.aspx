@@ -137,10 +137,10 @@
                     </div>
                      <div class="row pb-md-3">
                         <div class="col-md-2 text-md-right">
-                              <asp:Label ID="lbRequestDate28" runat="server" Font-Names="Century Gothic" Text="Remark : " Font-Size="Small" CssClass="font-weight-bold"></asp:Label>
+                              <asp:Label ID="lbRequestDate28" runat="server" Font-Names="Century Gothic" Text="Remark : " Font-Size="Larger" CssClass="font-weight-bold"></asp:Label>
                         </div>
                         <div class="col-md-10 ">
-                           <asp:Label ID="vlRemark" runat="server" Font-Names="Century Gothic" Text="Testing New Web Store's Material Requisition" Font-Size="Small" Font-Bold="False"></asp:Label>
+                           <asp:Label ID="vlRemark" runat="server" Font-Names="Century Gothic" Text="Testing New Web Store's Material Requisition" Font-Size="X-Large" Font-Bold="true" CssClass="text-danger"></asp:Label>
                         </div>
                        
                        

@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title>SMRO - 2.0.9</title>
+    <title>SMRO - 2.0.0.19</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,6 @@
     <link href="Scripts/fontawesome/css/all.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-
     <script>
         var interval;
         $(document).ready(function () {
@@ -24,15 +23,10 @@
                 $('#sidebar').toggleClass('active');
                 $('#sidebarCollapse i').toggleClass('blue');
             });
-            cntActOwner();
+            cntActOwner(); 
+            window.history.forward(); 
 
-            window.history.forward();
-
-
-
-        });
-
-
+        }); 
 
         function cntActOwner() {
             var obj = { param1: "ActOwner" };
@@ -60,9 +54,7 @@
                     return 0;
                 }
             });
-
         }
-
 
         function logout() {
             if (confirm("Are you sure to signout ?") == true) {
@@ -96,25 +88,21 @@
             } else {
                 return false;
             }
-
-
-
-
         }
-
-
     </script>
     <style>
         .blue {
             transform: rotate(180deg);
         }
+
+       
     </style>
 </head>
 <body>
 
     <div class=" ">
         <nav class="navbar navbar-expand-lg navbar-dark bg-MMCT " id="topbars">
-            <a class="navbar-brand font-weight-bolder" href="#">Store&#39;s Material Requisition Online <span style="font-size: 11px;">2.0.9</span></a>
+            <a class="navbar-brand font-weight-bolder" href="#">Store&#39;s Material Requisition Online <span style="font-size: 11px;">2.0.0.19</span></a>
             <div class="navbar-nav ml-auto">
                 <asp:Label ID="lblNames" runat="server" CssClass="text-white-50" Text="Hi!"></asp:Label>
             </div>
@@ -127,7 +115,6 @@
                 <div class="navbar-nav">
                     <a class="nav-link active mt-1 mb-md-1 p-md-1" href="../Default.aspx">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_List.aspx">Requisition List</a>
-
                     <%--<a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition.aspx">Requisition</a>--%>
                     <a class="nav-link mt-md-1 mb-md-1 p-md-1" href="../Page/Frm_Requisition_monitoring.aspx">Monitoring</a>
 
@@ -137,74 +124,92 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../Page/Frm_Report_Number.aspx">Report By Number</a>
                         <a class="dropdown-item" href="../Page/Frm_Report_Date.aspx">Report By Date</a>
-
                     </div>
                 </div>
-
                 <div class="navbar-nav ml-auto">
                     <button onclick="logout()">Sign Out</button>
                 </div>
             </div>
         </nav>
     </div>
-
     <div class="wrapper">
-
         <nav id="sidebar">
-
             <ul class="list-unstyled components">
-
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-edit"></i>My Activity</a>
                     <ul class="collapse list-unstyled show" id="homeSubmenu">
                         <li>
-                            <a href="Frm_Requisition_List.aspx?"><i class="fas fa-file-alt"></i>ALL</a>
-                        </li>
-
-                        <li>
-                            <a href="Frm_Requisition_List.aspx?jobType=ActOwner"><i class="fas fa-file-alt"></i>My Activity Owner <kbd class="bg-danger" id="kbdActOwner"><span id="cntActOwner"></span></kbd></a>
+                            <a href="Frm_Requisition_List.aspx?"><i class="fas fa-file-alt"></i> ALL</a>
                         </li>
                         <li>
-                            <a href="Frm_Requisition_List.aspx?jobType=jobOwner"><i class="fas fa-file-alt"></i>My Job Owner</a>
+                            <a href="Frm_Requisition_List.aspx?jobType=ActOwner"><i class="fas fa-file-alt"></i> My Activity Owner <kbd class="bg-danger" id="kbdActOwner"><span id="cntActOwner"></span></kbd></a>
+                        </li>
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?jobType=jobOwner"><i class="fas fa-file-alt"></i> My Job Owner</a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#pageSubmenuxxx" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-tasks"></i>Progress</a>
-                    <ul class="collapse list-unstyled show" id="pageSubmenuxxx">
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition Picking</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Store Requisition Transfer</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <%if (getAuthority())
+                </li> 
+                <%
+                    switch (getAuthority())
                     {
+                        case "store":
                 %>
                 <li>
-                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i>Maintenance</a>
-                    <ul class="collapse list-unstyled " id="pageSubmenuMaintenance">
+                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i> Maintenance</a>
+                    <ul class="collapse list-unstyled show" id="pageSubmenuMaintenance">
                         <li>
                             <a href="Frm_Requisition_List.aspx?jobType=ReversePicking"><i class="fas fa-history"></i>Reverse Picking</a>
+                            <a href="Frm_Storage_Suggestion.aspx"><i class="fa fa-server" aria-hidden="true"></i>Store Storage Suggestion</a>
                         </li>
-
                     </ul>
                 </li>
                 <%
+                        break;
+                    case "warehouse":
+                %>
+                <li>
+                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i> Maintenance</a>
+                    <ul class="collapse list-unstyled show" id="pageSubmenuMaintenance">
+                        <li>
+                            <a href="Frm_Storage_Suggestion.aspx"><i class="fa fa-server" aria-hidden="true"></i>Store Storage Suggestion</a>
+                        </li>
+                    </ul>
+                </li>
+                <%
+                        break;
+                    case "isc":
+                %>
+                <li>
+                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i>Maintenance</a>
+                    <ul class="collapse list-unstyled show" id="pageSubmenuMaintenance">
+                        <li>
+                            <a href="Frm_Requisition_List.aspx?jobType=ReversePicking"><i class="fas fa-history"></i>Reverse Picking</a>
+                            <a href="Frm_Storage_Suggestion.aspx"><i class="fa fa-server" aria-hidden="true"></i>Store Storage Suggestion</a>
+                            <a href="Frm_Requisition_Budget_Control.aspx"><i class="fas fa-hand-holding-usd"></i>Budget Control</a>
+                        </li>
+                    </ul>
+                </li>
+                <%
+                        break;
+                    case "spare":
+                %>
+                <li>
+                    <a href="#pageSubmenuMaintenance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i>Maintenance</a>
+                    <ul class="collapse list-unstyled show" id="pageSubmenuMaintenance">
+                        <li>
+                            <a href="Frm_Requisition_Budget_Control.aspx"><i class="fas fa-hand-holding-usd"></i>Budget Control</a>
+                        </li>
+                    </ul>
+                </li>
+                <%
+                        break;
                     }
                 %>
-
-
-
                 <hr />
+            
+                 
                 <li>
-                    <a href="../PDF/Work_Instruction.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Work_Instruction</a>
+                    <a href="../PDF/Work_Instruction.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Work_Instruction</a>
                 </li>
                 <li class="btnSide_SignOut">
                     <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -214,7 +219,7 @@
         <div id="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="w-100">
 
                         <button type="button" id="sidebarCollapse" class="btn btn-info " title="Show/Hide sidebar">
                             <%-- <i class="fa fa-home" aria-hidden="true"></i>--%>
@@ -223,7 +228,7 @@
                         </button>
 
                     </div>
-                    <div class="col-12 ">
+                    <div class="w-100">
                         <asp:ContentPlaceHolder ID="MainContent" runat="server">
                         </asp:ContentPlaceHolder>
                     </div> 

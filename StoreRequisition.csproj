@@ -125,6 +125,8 @@
     <Content Include="Page\Frm_Report_Number.aspx" />
     <Content Include="Page\Frm_Report_R.aspx" />
     <Content Include="Page\Frm_Report_R_Print.aspx" />
+    <Content Include="Page\Frm_Requisition_Budget_Control.aspx" />
+    <Content Include="Page\Frm_Requisition_Budget_Operation.aspx" />
     <Content Include="Page\Frm_Requisition_List.aspx" />
     <Content Include="Page\Frm_Requisition_Maintenance.aspx" />
     <Content Include="Page\Frm_Requisition_monitoring.aspx" />
@@ -132,6 +134,7 @@
     <Content Include="Page\Frm_Send_Requisition.aspx" />
     <Content Include="Page\Frm_Requisition.aspx" />
     <Content Include="Page\Frm_Report.aspx" />
+    <Content Include="Page\Frm_Storage_Suggestion.aspx" />
     <Content Include="Page\UserControls\ucPickingCenters.ascx" />
     <Content Include="Page\UserControls\ucRegularDetail.ascx" />
     <Content Include="Page\UserControls\ucStoreIssue.ascx" />
@@ -143,6 +146,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\code.jquery.com_ui_1.12.1_jquery-ui.js" />
     <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap.css" />
     <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\DataTables\DataTables-1.12.1\css\dataTables.bootstrap4.css" />
@@ -241,6 +245,7 @@
     <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="PDF\Work_Instruction.pdf" />
+    <Content Include="PDF\Password_Expired.pdf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -256,9 +261,12 @@
     <Content Include="Scripts\Site\Report_StoreIssue.js" />
     <Content Include="Scripts\Site\Report_SupvApproved.js" />
     <Content Include="Scripts\Site\Report_UserRecieved.js" />
+    <Content Include="Scripts\Site\Requisition_Budget_Operation.js" />
+    <Content Include="Scripts\Site\Requisition_Budget_Control.js" />
     <Content Include="Scripts\Site\Requisition_List.js" />
     <Content Include="Scripts\Site\Requisition_M.js" />
     <Content Include="Scripts\Site\Requisition_Maintenance.js" />
+    <Content Include="Scripts\Site\Storage_Suggestion.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -406,7 +414,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BudgetControl.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\mdResultReturn.cs" />
+    <Compile Include="Models\MyDropdownItem.cs" />
     <Compile Include="Models\PickingItems.cs" />
     <Compile Include="Models\Requisition_List.cs" />
     <Compile Include="Models\Requisition_M.cs" />
@@ -452,6 +464,20 @@
     </Compile>
     <Compile Include="Page\Frm_Report_R_Print.aspx.designer.cs">
       <DependentUpon>Frm_Report_R_Print.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Budget_Control.aspx.cs">
+      <DependentUpon>Frm_Requisition_Budget_Control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Budget_Control.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_Budget_Control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Budget_Operation.aspx.cs">
+      <DependentUpon>Frm_Requisition_Budget_Operation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Requisition_Budget_Operation.aspx.designer.cs">
+      <DependentUpon>Frm_Requisition_Budget_Operation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Frm_Requisition_List.aspx.cs">
       <DependentUpon>Frm_Requisition_List.aspx</DependentUpon>
@@ -502,6 +528,14 @@
     <Compile Include="Page\Frm_Report.aspx.designer.cs">
       <DependentUpon>Frm_Report.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page\Frm_Storage_Suggestion.aspx.cs">
+      <DependentUpon>Frm_Storage_Suggestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Frm_Storage_Suggestion.aspx.designer.cs">
+      <DependentUpon>Frm_Storage_Suggestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyData.cs" />
     <Compile Include="Page\UserControls\ucPickingCenters.ascx.cs">
       <DependentUpon>ucPickingCenters.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
